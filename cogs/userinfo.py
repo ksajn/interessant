@@ -2,46 +2,46 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-class whoami(commands.Cog):
+class userinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @app_commands.describe()
-    @app_commands.command(name='whoami', description='sends info about command author')
-    async def whoami(self, interaction: discord.Interaction):
+    @app_commands.describe(member = 'select the user you want information about')
+    @app_commands.command(name='userinfo', description='sends info about selected user')
+    async def userinfo(self, interaction: discord.Interaction, member: discord.Member):
         embed = discord.Embed(
-            title=f'{interaction.user.name} info',
+            title=f'{member.name} info',
             color=0x2b2d31
         )
-
-        embed.set_thumbnail(url=interaction.user.avatar)
+        
+        embed.set_thumbnail(url=member.avatar)
         embed.add_field(
             name='user id:',
-            value=f'{interaction.user.id}',
+            value=f'{member.id}',
             inline=False
         )
         embed.add_field(
             name='server nickname:',
-            value=f'{interaction.user.nick}',
+            value=f'{member.nick}',
             inline=False
         )
         embed.add_field(
             name='display name:',
-            value=f'{interaction.user.name}',
+            value=f'{member.name}',
             inline=False
         )
         embed.add_field(
             name='created account at:',
-            value=f'<t:{int(interaction.user.created_at.timestamp())}:R>',
+            value=f'<t:{int(member.created_at.timestamp())}:R>',
             inline=False
         )
         embed.add_field(
             name='joined server at:',
-            value=f'<t:{int(interaction.user.joined_at.timestamp())}:R>',
+            value=f'<t:{int(member.joined_at.timestamp())}:R>',
             inline=False
         )
         await interaction.response.send_message(embed=embed)
 
 
 async def setup(bot):
-    await bot.add_cog(whoami(bot))
+    await bot.add_cog(userinfo(bot))

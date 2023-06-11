@@ -7,12 +7,15 @@ class ban(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @app_commands.describe(member = 'select a member to ban')
+    @app_commands.describe(member = 'select a member to ban', reason = 'reason why member will be banned')
     @app_commands.command(name='ban', description = 'bans a member')
-    async def ban(self, interaction: discord.Interaction, member: discord.Member):
+    async def ban(self, interaction: discord.Interaction, member: discord.Member, reason: str):
         if checkBanPermission(interaction.guild.get_member(interaction.user.id)) == True:
-            await member.ban()
-            await interaction.response.send_message(f"successfully banned {member.display_name}")
+            try: 
+                await member.ban(reason=reason)
+                await interaction.response.send_message(f"successfully banned {member.display_name}")
+            except Exception as e:
+                print(e)
         else:
             await interaction.response.send_message("you don't have permission to ban members!")
 

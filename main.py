@@ -15,10 +15,12 @@ bot_token = os.getenv(key = 'BOT_TOKEN')
 
 class Client(commands.Bot):
     def __init__(self):
-        super().__init__(intents = discord.Intents().all(), command_prefix='!')
-
+        super().__init__(intents = discord.Intents().all(), command_prefix = '!')
+    
     async def on_ready(self):
         print(f'logged as {self.user}')
+        activity = discord.Activity(type = discord.ActivityType.listening )
+        await self.change_presence(activity=activity)
         try:
             synced = await bot.tree.sync()
             print(f'synced {len(synced)} command(s)')

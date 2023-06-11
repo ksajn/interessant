@@ -1,3 +1,5 @@
 # interessant
 
-bot made by: @TenKotowsky, @ksajn
+## Authors
+- [@ksajn](https://www.github.com/ksajn)
+- [@TenKotowsky](https://www.github.com/TenKotowsky)

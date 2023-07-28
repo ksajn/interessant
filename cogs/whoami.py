@@ -32,7 +32,7 @@ class whoami(commands.Cog):
         )
         embed.add_field(
             name='created account at:',
-            value=f'<t:{int(interaction.user.created_at.timestamp())}:R>',
+            value=f'<t:{int(interaction.user.created_at.timestamp())}:D>',
             inline=False
         )
         embed.add_field(

@@ -11,7 +11,7 @@ class invite(commands.Cog):
     async def invite(self, interaction: discord.Interaction):
         embed = discord.Embed(
             title = 'invite interessant', 
-            description = 'https://discord.com/oauth2/authorize?client_id=1112338579461525504&permissions=8&scope=bot%20applications.commands', # useless,
+            description = '[click here to invite](https://discord.com/oauth2/authorize?client_id=1112338579461525504&permissions=8&scope=bot%20applications.commands)', # useless,
             color = 0x2b2d31
         )
 

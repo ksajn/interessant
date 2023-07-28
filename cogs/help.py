@@ -23,10 +23,13 @@ class help(commands.Cog):
         
         embed.add_field(name = 'bot authors:', value = '<@335790974091526144>, <@823830926575927326>', inline = False)
         embed.add_field(name = 'prefix:', value = 'bot only uses slash commands', inline = False)
-        embed.add_field(name = 'general commands:', value = '`help`, `say`, `serverinfo`, `whoami`')
+        embed.add_field(name = 'general commands:', value = '`help`, `say`, `serverinfo`, `whoami`, `userinfo`')
+        embed.add_field(name = 'music commands:', value = '`artist`, `albums`')
+        embed.add_field(name = 'economy commands:', value = '`work`, `balance`, `pay`')
         embed.add_field(name = 'moderation commands:', value = '`ban`, `kick`, `mute`, `unmute`, `clear`')
-        embed.add_field(name = 'fun commands:', value = '`8ball`, `cat`, `dog`')
+        embed.add_field(name = 'fun commands:', value = '`8ball`, `cat`, `dog`, `dice`, `ship`')
         embed.add_field(name = 'utility commands:', value = '`ping`, `invite`, `poll`, `emoji`')
+        
         await interaction.response.send_message(embed = embed, view = view)
 
 async def setup(bot):
